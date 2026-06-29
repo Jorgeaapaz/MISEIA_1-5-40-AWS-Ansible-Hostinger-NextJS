@@ -194,6 +194,18 @@ Registro de uso de IA: [`docs/ai-changes.md`](docs/ai-changes.md).
 
 ---
 
+## Updates — 2026-06-29
+
+- **Tests:** Vitest + Testing Library configurados; 20 tests en `tests/page.test.tsx` (`npm run test:ci`)
+- **Arquitectura:** `app/page.tsx` refactorizado en 9 componentes (`app/components/`) y 4 ficheros de datos tipados (`app/data/`)
+- **CI/CD:** GitHub Actions actualizado con stages `lint → test → build → deploy` + Node 24; `.gitlab-ci.yml` añadido
+- **Docker:** `Dockerfile` y `docker-compose.yml` añadidos; app desplegada en Docker en EC2
+- **Deploy activo:** `https://ia.iadevaps.com` ✅ respondiendo HTTP 200
+- **Docs:** `docs/architecture.md` (diagramas Mermaid), `docs/decisions/` (3 ADRs), `docs/ai-changes.md`
+- **Compliance:** `docs/compliance/` con informe, plan PERT y 8 prompts de corrección
+
+---
+
 ## Contribución
 
 ```bash
