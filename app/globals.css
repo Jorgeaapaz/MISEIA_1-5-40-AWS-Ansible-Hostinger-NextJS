@@ -34,3 +34,69 @@ body {
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
 }
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes orb-drift {
+  0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.45; }
+  33%       { transform: scale(1.12) translate(22px, -28px); opacity: 0.65; }
+  66%       { transform: scale(0.93) translate(-18px, 22px); opacity: 0.5; }
+}
+@keyframes shimmer-text {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── Utility classes ─────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(130deg, #2dd4bf 0%, #818cf8 50%, #f97316 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-text 5s linear infinite;
+}
+.card-lift {
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+.btn-glow {
+  background: linear-gradient(130deg, #2dd4bf, #818cf8);
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-glow:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 44px rgba(45, 212, 191, 0.38);
+}
+.nav-glass {
+  background: rgba(6, 6, 18, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.module-row { transition: background 0.2s ease; }
+.module-row:hover { background: rgba(255,255,255,0.04); }
+.link-fade {
+  color: rgba(226,232,240,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.link-fade:hover { color: rgba(226,232,240,0.9); }
+.nav-link {
+  font-size: 0.875rem;
+  color: rgba(226,232,240,0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: #2dd4bf; }
