@@ -121,6 +121,7 @@ jobs:
           ssh -i ~/.ssh/deploy_key \
             "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" \
             "cd ~/MISEIA140_aiformacion && \
+             sudo docker rm -f aiformacion >/dev/null 2>&1 || true && \
              sudo docker build -t aiformacion:latest . && \
              sudo docker compose build api && \
              sudo docker compose up -d && \
