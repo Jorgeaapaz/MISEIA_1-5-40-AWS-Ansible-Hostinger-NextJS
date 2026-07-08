@@ -20,7 +20,7 @@ Push to: `Jorgeaapaz/gh-aws`
 
 ## Deployment
 
-- **Target server:** `ubuntu@3.239.108.60`
+- **Target server:** `ubuntu@32.196.108.254`
 - **SSH key:** `C:/ubuntuiso/.ssh/vboxuser`
 - **Deploy method:** SSH into EC2 after GitHub Actions build
 - **Service:** Create and manage a systemd service on the EC2 instance to run the Next.js app
@@ -37,7 +37,7 @@ Push to: `Jorgeaapaz/gh-aws`
 | Secret name              | Value                                      |
 |--------------------------|--------------------------------------------|
 | `EC2_SSH_KEY`            | Contents of `vboxuser` private key         |
-| `EC2_HOST`               | `3.239.108.60`                              |
+| `EC2_HOST`               | `32.196.108.254`                              |
 | `EC2_USER`               | `ubuntu`                                   |
 | `MONGO_ROOT_USERNAME`    | MongoDB root username (`admin`)            |
 | `MONGO_ROOT_PASSWORD`    | MongoDB root password                      |
