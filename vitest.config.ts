@@ -6,11 +6,12 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: ["./tests/setup.ts"],
+    exclude: ["**/node_modules/**", "tests/e2e/**"],
     globals: true,
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov"],
-      include: ["app/**"],
+      include: ["app/**/*.{ts,tsx}", "server/**/*.ts"],
       thresholds: { lines: 60 },
     },
   },

@@ -34,11 +34,14 @@ Push to: `Jorgeaapaz/gh-aws`
 
 ## Required GitHub Secrets
 
-| Secret name        | Value                                      |
-|--------------------|--------------------------------------------|
-| `EC2_SSH_KEY`      | Contents of `vboxuser` private key         |
-| `EC2_HOST`         | `3.235.47.30`                              |
-| `EC2_USER`         | `ubuntu`                                   |
+| Secret name              | Value                                      |
+|--------------------------|--------------------------------------------|
+| `EC2_SSH_KEY`            | Contents of `vboxuser` private key         |
+| `EC2_HOST`               | `3.235.47.30`                              |
+| `EC2_USER`               | `ubuntu`                                   |
+| `MONGO_ROOT_USERNAME`    | MongoDB root username (`admin`)            |
+| `MONGO_ROOT_PASSWORD`    | MongoDB root password                      |
+| `JWT_SECRET`             | Signing secret for user session JWTs       |
 
 ## Tasks
 
@@ -46,4 +49,5 @@ Push to: `Jorgeaapaz/gh-aws`
 - [x] Push repo to `Jorgeaapaz/gh-aws`
 - [x] Configure GitHub Actions workflow (build + deploy)
 - [ ] Run `scripts/setup-ec2.sh` on the EC2 instance (one-time bootstrap)
-- [x] Set GitHub repository secrets (`EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`)
+- [x] Set GitHub repository secrets (`EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`, `MONGO_ROOT_USERNAME`, `MONGO_ROOT_PASSWORD`, `JWT_SECRET`)
+- [x] Add MongoDB + Express users API to the CI/CD pipeline and `docker-compose.yml`

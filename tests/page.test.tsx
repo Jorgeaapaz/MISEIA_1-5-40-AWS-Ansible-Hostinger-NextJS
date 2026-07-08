@@ -11,6 +11,11 @@ vi.mock("next/font/google", () => ({
 // Stub CSS imports
 vi.mock("../app/globals.css", () => ({}));
 
+// Mock next/navigation — Nav uses useRouter() for auth navigation
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }),
+}));
+
 describe("Home — landing page AIFormación", () => {
   beforeEach(() => {
     render(<Home />);
