@@ -8,6 +8,8 @@ stages:
 
 default:
   image: node:24-alpine
+  tags:
+    - cloudrun
   cache:
     key: "${CI_COMMIT_REF_SLUG}"
     paths:
