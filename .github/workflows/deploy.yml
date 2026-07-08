@@ -90,19 +90,21 @@ jobs:
 
       - name: Sync Express API source, Dockerfiles and compose file to EC2
         run: |
-          rsync -az \
-            -e "ssh -i ~/.ssh/deploy_key" \
-            server/ app/data/ Dockerfile docker-compose.yml package.json package-lock.json \
-            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/MISEIA140_aiformacion/staging/"
           ssh -i ~/.ssh/deploy_key \
             "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" \
-            "mkdir -p ~/MISEIA140_aiformacion/server ~/MISEIA140_aiformacion/app/data && \
-             cp -r ~/MISEIA140_aiformacion/staging/server/. ~/MISEIA140_aiformacion/server/ && \
-             cp -r ~/MISEIA140_aiformacion/staging/app/data/. ~/MISEIA140_aiformacion/app/data/ && \
-             cp ~/MISEIA140_aiformacion/staging/Dockerfile ~/MISEIA140_aiformacion/staging/docker-compose.yml \
-                ~/MISEIA140_aiformacion/staging/package.json ~/MISEIA140_aiformacion/staging/package-lock.json \
-                ~/MISEIA140_aiformacion/ && \
-             rm -rf ~/MISEIA140_aiformacion/staging"
+            "mkdir -p ~/MISEIA140_aiformacion/server ~/MISEIA140_aiformacion/app/data"
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            server/ \
+            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/MISEIA140_aiformacion/server/"
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            app/data/ \
+            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/MISEIA140_aiformacion/app/data/"
+          rsync -az \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            Dockerfile docker-compose.yml package.json package-lock.json \
+            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/MISEIA140_aiformacion/"
 
       - name: Write production env file on EC2
         run: |
