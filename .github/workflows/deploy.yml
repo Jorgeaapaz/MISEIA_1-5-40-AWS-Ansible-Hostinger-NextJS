@@ -122,4 +122,6 @@ jobs:
              gunzip -c images.tar.gz | sudo docker load && \
              rm -f images.tar.gz && \
              sudo docker compose up -d && \
+             sudo docker image prune -af >/dev/null && \
+             sudo docker builder prune -af >/dev/null && \
              sudo docker compose ps"
