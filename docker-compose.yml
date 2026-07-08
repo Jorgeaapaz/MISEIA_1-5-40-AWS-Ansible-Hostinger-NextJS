@@ -3,9 +3,45 @@ services:
     image: aiformacion:latest
     container_name: aiformacion
     restart: unless-stopped
+    depends_on:
+      - api
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
       - HOSTNAME=0.0.0.0
+      - EXPRESS_API_URL=http://api:4000
+
+  api:
+    image: aiformacion-api:latest
+    container_name: aiformacion-api
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - MONGODB_URI=${MONGODB_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  mongodb:
+    image: mongo:7.0
+    container_name: dominaia-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=dominaia
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

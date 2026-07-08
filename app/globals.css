@@ -100,3 +100,62 @@ body {
   transition: color 0.2s;
 }
 .nav-link:hover { color: #2dd4bf; }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: var(--surface);
+}
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.auth-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.75);
+  margin-bottom: 6px;
+}
+.auth-field input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--fg);
+  font-size: 0.92rem;
+  font-family: var(--font-body, sans-serif);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.auth-field input:focus {
+  outline: none;
+  border-color: #2dd4bf;
+  background: rgba(255, 255, 255, 0.06);
+}
+.auth-field input[aria-invalid="true"] {
+  border-color: #f97316;
+}
+.field-error {
+  color: #f97316;
+  font-size: 0.78rem;
+  margin-top: 5px;
+}
+.plan-option {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.plan-option:hover { transform: translateY(-3px); }
+.plan-option[aria-pressed="true"] {
+  border-color: #2dd4bf;
+  box-shadow: 0 0 0 1px #2dd4bf inset;
+}

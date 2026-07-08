@@ -1,4 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function Nav() {
+  const router = useRouter();
+
   return (
     <nav className="nav-glass" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50 }}>
       <div
@@ -48,22 +54,42 @@ export default function Nav() {
               </a>
             ))}
           </div>
-          <button
-            className="btn-glow"
-            style={{
-              padding: "9px 22px",
-              borderRadius: "100px",
-              border: "none",
-              color: "#060612",
-              fontWeight: 800,
-              fontSize: "0.82rem",
-              cursor: "pointer",
-              fontFamily: "var(--font-body, sans-serif)",
-              letterSpacing: "0.01em",
-            }}
-          >
-            Reservar plaza
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            <button
+              type="button"
+              className="btn-ghost"
+              onClick={() => router.push("/login")}
+              style={{
+                padding: "9px 20px",
+                borderRadius: "100px",
+                fontWeight: 700,
+                fontSize: "0.82rem",
+                cursor: "pointer",
+                fontFamily: "var(--font-body, sans-serif)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              className="btn-glow"
+              onClick={() => router.push("/register")}
+              style={{
+                padding: "9px 22px",
+                borderRadius: "100px",
+                border: "none",
+                color: "#060612",
+                fontWeight: 800,
+                fontSize: "0.82rem",
+                cursor: "pointer",
+                fontFamily: "var(--font-body, sans-serif)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              Reservar plaza
+            </button>
+          </div>
         </div>
       </div>
     </nav>
