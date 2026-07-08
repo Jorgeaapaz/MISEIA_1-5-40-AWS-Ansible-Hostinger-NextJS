@@ -1,7 +1,7 @@
 FROM node:24-alpine
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --omit=dev
 COPY server ./server
 COPY app/data ./app/data
 EXPOSE 4000
