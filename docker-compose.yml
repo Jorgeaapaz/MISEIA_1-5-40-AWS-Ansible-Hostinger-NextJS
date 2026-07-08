@@ -27,7 +27,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=4000
-      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_URI=${MONGODB_URI:-mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb:27017/dominaia?authSource=admin}
       - JWT_SECRET=${JWT_SECRET}
 
   mongodb:
