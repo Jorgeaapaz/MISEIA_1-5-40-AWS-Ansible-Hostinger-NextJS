@@ -67,7 +67,7 @@ jobs:
         run: npm ci
 
       - name: Build Next.js (standalone)
-        run: NODE_ENV=production npm run build
+        run: NODE_ENV=production EXPRESS_API_URL=http://api:4000 npm run build
 
       - name: Assemble standalone bundle
         run: |
