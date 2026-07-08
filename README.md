@@ -996,3 +996,31 @@ git push origin feature/nombre-del-cambio
 ## Licencia
 
 Uso educativo — bloque formativo MISEIA 1-5-40. © 2026 AIFormación.
+
+---
+
+## MongoDB en producción (EC2)
+
+MongoDB corre como contenedor Docker (`mongo:7.0`, servicio `mongodb` en `docker-compose.yml`) en la instancia EC2 — no está instalado nativamente en el host. Los datos persisten en el volumen con nombre `mongo_data`, por lo que sobreviven a reinicios y redeploys del contenedor. La base de datos de la aplicación es `dominaia`.
+
+### Cadena de conexión (MongoDB Compass)
+
+```
+mongodb://admin:MongoAdmin2024!@32.196.108.254:27017/dominaia?authSource=admin
+```
+
+> **Notas:**
+> - El puerto `27017` debe estar abierto en el Security Group de EC2 (regla de entrada TCP 27017, idealmente restringida a tu IP en vez de `0.0.0.0/0`, ya que la autenticación es solo usuario/contraseña).
+> - La instancia no tiene una IP elástica asignada: la IP pública cambia en cada reinicio. Si la conexión falla, verifica la IP actual de la instancia.
+
+### Usuarios sembrados (demo)
+
+Insertados por `npm run seed` (`scripts/seed-users.ts`) en la colección `dominaia.users`, de forma idempotente (upsert por email). Las contraseñas se muestran en texto plano únicamente para fines de demo/evaluación — en la base de datos solo se almacena el hash bcrypt.
+
+| Nombre | Email | Contraseña |
+|---|---|---|
+| Ana García | ana.garcia@example.com | Ana#Pass2024 |
+| Carlos Méndez | carlos.mendez@example.com | Carlos#Pass2024 |
+| Lucía Fernández | lucia.fernandez@example.com | Lucia#Pass2024 |
+| Diego Rojas | diego.rojas@example.com | Diego#Pass2024 |
+| María Torres | maria.torres@example.com | Maria#Pass2024 |
